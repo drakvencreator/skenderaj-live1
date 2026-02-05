@@ -2,7 +2,8 @@
 import { GoogleGenAI } from "@google/genai";
 
 export const summarizeNews = async (articleTitle: string, excerpt: string) => {
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
+  // FIX: Always use direct process.env.API_KEY for initialization as per guidelines
+  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
   try {
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
@@ -13,6 +14,7 @@ export const summarizeNews = async (articleTitle: string, excerpt: string) => {
         topP: 0.95,
       }
     });
+    // FIX: Using the .text property directly (not a method) to extract the string output
     return response.text;
   } catch (error) {
     console.error("Gemini Error:", error);

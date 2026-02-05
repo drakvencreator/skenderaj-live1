@@ -28,7 +28,7 @@ const NewsCard: React.FC<NewsCardProps> = ({ item, variant = 'vertical' }) => {
     switch (cat.toLowerCase()) {
       case 'showbiz': return 'bg-pink-600 text-white';
       case 'sport': return 'bg-green-600 text-white';
-      case 'drenica': return 'bg-red-700 text-white';
+      case 'komuna': return 'bg-red-700 text-white';
       case 'politikë': return 'bg-blue-800 text-white';
       default: return 'bg-gray-100 text-gray-800';
     }

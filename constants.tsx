@@ -4,9 +4,9 @@ import { NewsItem } from './types';
 export const MOCK_NEWS: NewsItem[] = [
   {
     id: '1',
-    title: 'Transformimi i Skenderajt: Projektet e reja infrastrukturore që po ndryshojnë qytetin',
+    title: 'Transformimi i Skenderaj: Projektet e reja infrastrukturore që po ndryshojnë qytetin',
     excerpt: 'Kryetari i komunës shpall planet për rrugët e reja dhe zonat e gjelbra që do të nisin këtë pranverë...',
-    category: 'Drenica',
+    category: 'Komuna',
     image: 'https://picsum.photos/seed/sk1/800/600',
     date: '10 Minuta më parë',
     author: 'Redaksia',

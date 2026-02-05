@@ -10,4 +10,32 @@ export interface NewsItem {
   isFeatured?: boolean;
 }
 
-export type Category = 'Politikë' | 'Sport' | 'Showbiz' | 'Ekonomi' | 'Botë' | 'Kronikë' | 'Drenica' | 'Tech';
+export interface AdConfig {
+  imageUrl: string;
+  linkUrl: string;
+  title: string;
+}
+
+export type RequestStatus = 'pending' | 'approved' | 'ignored';
+
+export interface ContactRequest {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
+  date: string;
+  status: RequestStatus;
+}
+
+export type UserRole = 'Admin' | 'Moderator';
+
+export interface AppUser {
+  id: string;
+  name: string;
+  username: string;
+  password: string;
+  role: UserRole;
+}
+
+export type Category = 'Politikë' | 'Sport' | 'Showbiz' | 'Ekonomi' | 'Botë' | 'Kronikë' | 'Komuna' | 'Tech';
