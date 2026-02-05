@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useMemo } from 'react';
 import Header from './components/Header';
 import NewsCard from './components/NewsCard';
@@ -349,7 +348,7 @@ const App: React.FC = () => {
             {/* Links and Copyright */}
             <div className="text-center">
               <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-4">
-                Zëri i Drenicës - Informim i shpejtë dhe i saktë
+                Informim i shpejtë dhe i saktë
               </p>
               <div className="h-px w-20 bg-red-600 mx-auto mb-6"></div>
               <p className="text-[11px] font-bold text-gray-900 uppercase tracking-widest">
