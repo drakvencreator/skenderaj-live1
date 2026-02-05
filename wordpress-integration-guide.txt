@@ -1,0 +1,23 @@
+
+HAPAT PËR INTEGRIM NË WORDPRESS:
+
+1. MODIFIKIMI I FUNCTIONS.PHP (Në temën tuaj):
+Shtoni këtë kod në fund të file-it functions.php për të lejuar ngarkimin e skripteve si module:
+
+add_filter('script_loader_tag', function($tag, $handle, $src) {
+    if ($handle === 'skenderaj-live-app') {
+        return '<script type="module" src="' . esc_url($src) . '"></script>';
+    }
+    return $tag;
+}, 10, 3);
+
+2. KRIJIMI I NJË FAQEJE TË RE (Në WordPress Dashboard):
+- Shkoni te Pages -> Add New.
+- Zgjidhni "Edit with HTML" ose shtoni një "Custom HTML" block.
+- Vendosni këtë rresht: <div id="root"></div>
+
+3. KOPJIMI I STYLE-VE:
+Sigurohuni që Tailwind CSS dhe FontAwesome të jenë në <head> (shih index.html).
+
+4. API KEY:
+Sigurohuni që procesi juaj i hostingut e kalon API_KEY si environment variable, ose për testim, mund ta deklaroni përkohësisht në fillim të skriptit (kujdes me sigurinë).
