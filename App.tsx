@@ -49,9 +49,27 @@ const App: React.FC = () => {
       });
 
     const unsubscribeUsers = db.collection(COLLECTIONS.USERS)
-      .onSnapshot((snapshot: any) => {
+      .onSnapshot(async (snapshot: any) => {
         const usersData = snapshot.docs.map((doc: any) => ({ id: doc.id, ...doc.data() } as AppUser));
         setUsers(usersData);
+
+        // AUTO-REGISTRATION LOGIC: Krijon përdoruesin Admin nëse nuk ekziston
+        const adminExists = usersData.some(u => u.username.toLowerCase() === 'admin');
+        if (!adminExists && usersData.length === 0) {
+          try {
+            const defaultAdmin: AppUser = {
+              id: 'initial-admin',
+              name: 'Administrator',
+              username: 'admin',
+              password: 'Dd1.1',
+              role: 'Admin'
+            };
+            await db.collection(COLLECTIONS.USERS).doc(defaultAdmin.id).set(defaultAdmin);
+            console.log("Përdoruesi Admin u krijua me sukses!");
+          } catch (e) {
+            console.error("Dështoi krijimi i adminit:", e);
+          }
+        }
       });
 
     const unsubscribeRequests = db.collection(COLLECTIONS.REQUESTS)
