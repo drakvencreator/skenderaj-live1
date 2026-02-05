@@ -23,6 +23,13 @@ const App: React.FC = () => {
   const [adConfig, setAdConfig] = useState<AdConfig>({ imageUrl: '', linkUrl: '', title: 'Hapësirë Reklamuese' });
   const [dbError, setDbError] = useState<string | null>(null);
 
+  // Social Links
+  const socialLinks = {
+    facebook: "https://www.facebook.com/profile.php?id=100079638993669",
+    instagram: "https://www.instagram.com/skenderajlive",
+    tiktok: "https://www.tiktok.com/@skenderajlive"
+  };
+
   useEffect(() => {
     // Krijimi i dëgjuesve (Listeners) për sinkronizim real-time
     const unsubscribeNews = db.collection(COLLECTIONS.NEWS)
@@ -231,11 +238,29 @@ const App: React.FC = () => {
                 <div className="text-gray-600 leading-relaxed text-lg whitespace-pre-line">
                   {readingNews.excerpt}
                 </div>
-                <div className="mt-12 pt-8 border-t border-gray-100 flex justify-between items-center">
-                   <span className="text-[10px] font-black uppercase text-gray-400">Autori: <span className="text-black">{readingNews.author}</span></span>
-                   <div className="flex gap-4">
-                      <button className="text-blue-600"><i className="fab fa-facebook-f"></i></button>
-                      <button className="text-pink-600"><i className="fab fa-instagram"></i></button>
+                
+                {/* SOCIAL SHARE & AUTHOR SECTION */}
+                <div className="mt-12 pt-8 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-6">
+                   <div className="flex items-center gap-3">
+                     <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-400">
+                        <i className="fas fa-user-edit text-xs"></i>
+                     </div>
+                     <span className="text-[10px] font-black uppercase text-gray-400 tracking-widest">
+                       Autori: <span className="text-black ml-1">{readingNews.author}</span>
+                     </span>
+                   </div>
+                   
+                   <div className="flex items-center gap-4">
+                      <span className="text-[9px] font-black uppercase text-gray-300 tracking-tighter">Na ndiqni:</span>
+                      <a href={socialLinks.facebook} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all transform hover:scale-110 shadow-sm">
+                        <i className="fab fa-facebook-f text-xs"></i>
+                      </a>
+                      <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-xl bg-pink-50 text-pink-600 flex items-center justify-center hover:bg-pink-600 hover:text-white transition-all transform hover:scale-110 shadow-sm">
+                        <i className="fab fa-instagram text-xs"></i>
+                      </a>
+                      <a href={socialLinks.tiktok} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-xl bg-gray-100 text-black flex items-center justify-center hover:bg-black hover:text-white transition-all transform hover:scale-110 shadow-sm">
+                        <i className="fab fa-tiktok text-xs"></i>
+                      </a>
                    </div>
                 </div>
               </div>
@@ -310,13 +335,13 @@ const App: React.FC = () => {
             
             {/* Social Icons */}
             <div className="flex gap-8 mb-10">
-              <a href="https://www.facebook.com/profile.php?id=100079638993669" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 hover:bg-blue-600 hover:text-white transition-all transform hover:scale-110">
+              <a href={socialLinks.facebook} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 hover:bg-blue-600 hover:text-white transition-all transform hover:scale-110">
                 <i className="fab fa-facebook-f"></i>
               </a>
-              <a href="https://www.instagram.com/skenderajlive" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 hover:bg-pink-500 hover:text-white transition-all transform hover:scale-110">
+              <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 hover:bg-pink-500 hover:text-white transition-all transform hover:scale-110">
                 <i className="fab fa-instagram"></i>
               </a>
-              <a href="https://www.tiktok.com/@skenderajlive" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 hover:bg-black hover:text-white transition-all transform hover:scale-110">
+              <a href={socialLinks.tiktok} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 hover:bg-black hover:text-white transition-all transform hover:scale-110">
                 <i className="fab fa-tiktok"></i>
               </a>
             </div>
