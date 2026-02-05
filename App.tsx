@@ -160,7 +160,7 @@ const App: React.FC = () => {
   const totalPages = Math.ceil(filteredNews.length / ITEMS_PER_PAGE);
 
   return (
-    <div className="min-h-screen pb-10 bg-gray-50 animate-fade-in">
+    <div className="min-h-screen flex flex-col bg-gray-50 animate-fade-in">
       {dbError && (
         <div className="bg-black text-white text-[9px] font-black uppercase py-2 text-center sticky top-0 z-[100] tracking-widest px-4">
           <span className="text-red-500 mr-2">● GABIM KONFIGURIMI:</span> {dbError}
@@ -196,7 +196,7 @@ const App: React.FC = () => {
 
       {isContactOpen && <ContactModal onClose={() => setIsContactOpen(false)} onSubmit={handleAddContactRequest} />}
 
-      <main className="max-w-7xl mx-auto px-4 mt-6">
+      <main className="max-w-7xl mx-auto px-4 mt-6 flex-grow">
         {!readingNews && (
           <div className="mb-10">
             <a href={adConfig.linkUrl || '#'} target="_blank" rel="noopener noreferrer" className="block w-full h-24 sm:h-32 bg-gray-100 rounded-2xl overflow-hidden relative group border-2 border-dashed border-gray-200">
@@ -298,6 +298,42 @@ const App: React.FC = () => {
           </aside>
         </div>
       </main>
+
+      {/* FOOTER SECTION */}
+      <footer className="bg-white border-t border-gray-100 pt-16 pb-10 mt-20">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex flex-col items-center">
+            {/* Logo in footer */}
+            <div className="serif text-3xl font-black tracking-tighter mb-8">
+              SKENDERAJ<span className="text-red-600 italic">LIVE</span>
+            </div>
+            
+            {/* Social Icons */}
+            <div className="flex gap-8 mb-10">
+              <a href="https://www.facebook.com/profile.php?id=100079638993669" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 hover:bg-blue-600 hover:text-white transition-all transform hover:scale-110">
+                <i className="fab fa-facebook-f"></i>
+              </a>
+              <a href="https://www.instagram.com/skenderajlive" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 hover:bg-pink-500 hover:text-white transition-all transform hover:scale-110">
+                <i className="fab fa-instagram"></i>
+              </a>
+              <a href="https://www.tiktok.com/@skenderajlive" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 hover:bg-black hover:text-white transition-all transform hover:scale-110">
+                <i className="fab fa-tiktok"></i>
+              </a>
+            </div>
+
+            {/* Links and Copyright */}
+            <div className="text-center">
+              <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-4">
+                Zëri i Drenicës - Informim i shpejtë dhe i saktë
+              </p>
+              <div className="h-px w-20 bg-red-600 mx-auto mb-6"></div>
+              <p className="text-[11px] font-bold text-gray-900 uppercase tracking-widest">
+                &copy; 2026 Skenderaj Live. Të gjitha të drejtat janë të rezervuara.
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
